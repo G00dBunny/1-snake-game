@@ -68,7 +68,8 @@ function move() {
 
   if (head.x === food.x && head.y === food.y) {
     food = generateFood()
-    clearInterval()
+    increaseSpeed()
+    clearInterval(gameInterval)
     gameInterval = setInterval(() => {
       move()
       draw()
@@ -116,3 +117,15 @@ function handleKeyPress(event) {
 }
 
 document.addEventListener('keydown', handleKeyPress)
+
+function increaseSpeed() {
+  if (interval > 150) {
+    interval -= 5
+  } else if (interval > 100) {
+    interval -= 3
+  } else if (interval > 50) {
+    interval -= 2
+  } else if (interval > 25) {
+    interval -= 1
+  }
+}
